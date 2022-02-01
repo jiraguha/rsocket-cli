@@ -143,22 +143,31 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
-if (properties.containsKey("graalbuild")) {
-  val nativeImage = tasks["nativeImage"]
+//if (properties.containsKey("graalbuild")) {
+//  val nativeImage = tasks["nativeImage"]
+//
+//  distributions {
+//    val graal = create("graal") {
+//      contents {
+//        from("${rootProject.projectDir}") {
+//          include("README.md", "LICENSE")
+//        }
+//        from("${rootProject.projectDir}/zsh") {
+//          into("zsh")
+//        }
+//        into("bin") {
+//          from(nativeImage)
+//        }
+//      }
+//    }
+//  }
+//}
 
-  distributions {
-    val graal = create("graal") {
-      contents {
-        from("${rootProject.projectDir}") {
-          include("README.md", "LICENSE")
-        }
-        from("${rootProject.projectDir}/zsh") {
-          into("zsh")
-        }
-        into("bin") {
-          from(nativeImage)
-        }
-      }
-    }
-  }
+
+
+tasks.register<Zip>("zipExecutable") {
+  dependsOn ("nativeImage")
+  archiveFileName.set( "rsocket-cli.zip")
+  destinationDirectory.set(file("$buildDir/dist"))
+  from( "$buildDir/graal")
 }
