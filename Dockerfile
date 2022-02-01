@@ -14,7 +14,7 @@ RUN curl -fsSL https://github.com/jiraguha/rsocket-cli/releases/download/v${RSOC
   && mkdir -p ./rsocket-cli-d/bin && mv rsocket-cli rsocket-cli-d/bin/rsocket-cli  \
   && chmod 755 rsocket-cli-d/bin/rsocket-cli
 
-FROM frolvlad/alpine-glibc:alpine-3.13
+FROM ubuntu:22.04
 
 ENV RSOCKET_VESION=${RSOCKET_VESION}
 COPY --from=download /rsocket-cli-d /rsocket-cli
