@@ -98,9 +98,7 @@ graal {
   outputName("rsocket-cli")
   graalVersion("21.0.0")
   javaVersion("11")
-  option("--enable-https")
-  option("--enable-http")
-  option("--enable-url-protocols")
+  option("--enable-url-protocols=https,http,tcp,ws")
   option("--no-fallback")
   option("--allow-incomplete-classpath")
 
