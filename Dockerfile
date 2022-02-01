@@ -20,3 +20,5 @@ ENV RSOCKET_VESION=${RSOCKET_VESION}
 COPY --from=download /rsocket-cli-d /rsocket-cli
 ENV RSOCKET_PATH /rsocket-cli
 ENV PATH $RSOCKET_PATH/bin:$PATH
+
+CMD["rsocket-cli"]
